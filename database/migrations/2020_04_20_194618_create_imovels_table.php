@@ -15,13 +15,11 @@ class CreateImovelsTable extends Migration
     {
         Schema::create('imovels', function (Blueprint $table) {
             
-            $table->id();
+            $table->increments('id');
             
-            $table->integer('pessoa_id')->unsigned();
-
-            $table->foreign('pessoa_id')->refereces('id')->on('pessoas')->onDelete('cascade');
-
-            $table->string('bairro',100);
+            $table->integer('pessoa_id')->unsigned()->index()
+                  ->foreign('pessoa_id')->references('id')
+                  ->on('pessoas')->onDelete('cascade');
 
             $table->string('numero',10);
 
