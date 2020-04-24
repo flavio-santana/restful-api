@@ -14,7 +14,31 @@ class CreateImovelsTable extends Migration
     public function up()
     {
         Schema::create('imovels', function (Blueprint $table) {
+            
             $table->id();
+            
+            $table->integer('pessoa_id')->unsigned();
+
+            $table->foreign('pessoa_id')->refereces('id')->on('pessoas')->onDelete('cascade');
+
+            $table->string('bairro',100);
+
+            $table->string('numero',10);
+
+            $table->string('complemento',10);
+
+            $table->string('cep',10);
+
+            $table->string('bairro',100);
+
+            $table->string('cidade',100);
+
+            $table->string('uf',2);
+
+            $table->string('descricao',250);
+
+            $table->string('desativado',1);
+
             $table->timestamps();
         });
     }
