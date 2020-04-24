@@ -1,12 +1,12 @@
 Configurando o Ambiente 
 
-Obs: Esse projeto foi elaborado utilizando os seguintes recursos:  
+Obs: O projeto foi elaborado utilizando os seguintes recursos:  
     
     - Ubuntu versão 16.04 LTS
-    - Versão do PHP: 7.2.30-1
+    - PHP 7.2.30-1
     - Laravel Framework 7.6.2
-    - Servidor web Apache/2.4.18
-    - Servidor de banco de dados MySQL 5.7.29-0ubuntu0.16.04.1
+    - Apache/2.4.18
+    - MySQL 5.7.29-0ubuntu0.16.04.1
 
 Pré-requisitos 
 
@@ -22,6 +22,7 @@ Passo a passo para executar o projeto
 
         php artisan migrate  
 
-    3.  
-        
+    3.  Para popular as tabelas do banco de dados, execute a instrução abaixo: 
+
+        php artisan db:seed 
      

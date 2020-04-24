@@ -21,6 +21,8 @@ class CreateImovelsTable extends Migration
                   ->foreign('pessoa_id')->references('id')
                   ->on('pessoas')->onDelete('cascade');
 
+            $table->string('endereco',100);
+            
             $table->string('numero',10);
 
             $table->string('complemento',10);
