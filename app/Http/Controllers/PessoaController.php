@@ -6,6 +6,7 @@ use App\Model\Pessoa;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Pessoa\PessoaResource; 
+use App\Http\Resources\Pessoa\PessoaCollection; 
 
 class PessoaController extends Controller
 {
@@ -17,7 +18,13 @@ class PessoaController extends Controller
     public function index()
     {
         //
-        return Pessoa::all();
+        //return Pessoa::all();
+
+        //return PessoaResource::collection(Pessoa::all());
+
+        //return new PessoaCollection(Pessoa::all());
+
+        return PessoaCollection::collection(Pessoa::all());
     }
 
     /**

@@ -11,6 +11,6 @@ class Imovel extends Model
     //
     public function pessoas()
     {
-        //$this->belongsTo(Pessoa::class);
+        $this->belongsTo(Pessoa::class);
     }
 }
