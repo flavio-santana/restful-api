@@ -51,10 +51,10 @@ class ImovelController extends Controller
     {
         //dd($imovel);
 
-        return $imovel; 
+        //return $imovel; 
 
         //
-        //return new ImovelResource($imovel);
+        return new ImovelResource($imovel);
     }
 
     /**

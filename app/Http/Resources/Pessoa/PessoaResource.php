@@ -24,6 +24,11 @@ class PessoaResource extends JsonResource
             'desativado'     => $this->desativado,
             'created_at'     => $this->created_at,
             'updated_at'     => $this->updated_at,
+            'imoveis'        => $this->imoveis->count() > 0 ? $this->imoveis->count() : 'Está pessoa não possui imóveis!',
+
+            'ref' => [
+                'imoveis' => route('imoveis.index', $this->id),
+            ]   
         ];
     }
 }
