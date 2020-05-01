@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Model\Pessoa;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\Pessoa\PessoaResource; 
+
 class PessoaController extends Controller
 {
     /**
@@ -15,6 +17,7 @@ class PessoaController extends Controller
     public function index()
     {
         //
+        return Pessoa::all();
     }
 
     /**
@@ -46,7 +49,11 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
+        
+        //return $pessoa; 
+
         //
+        return new PessoaResource($pessoa);
     }
 
     /**

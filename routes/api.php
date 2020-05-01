@@ -21,9 +21,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResource('/pessoas','PessoaController');
 
+Route::apiResource('/imoveis','ImovelController');
+
+/*
 Route::group(['prefix'=>'pessoas'],function(){
 
     Route::apiResource('/{pessoa}/imoveis','ImovelController');
 
 });
+*/
 

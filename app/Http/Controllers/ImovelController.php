@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Model\Imovel;
 use Illuminate\Http\Request;
 
+use App\Http\Resources\Imovel\ImovelResource;
+
 class ImovelController extends Controller
 {
     /**
@@ -15,6 +17,7 @@ class ImovelController extends Controller
     public function index()
     {
         //
+        return Imovel::all();
     }
 
     /**
@@ -46,7 +49,12 @@ class ImovelController extends Controller
      */
     public function show(Imovel $imovel)
     {
+        //dd($imovel);
+
+        return $imovel; 
+
         //
+        //return new ImovelResource($imovel);
     }
 
     /**
