@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Model\Imovel;
+use App\Model\Pessoa;
 use Illuminate\Http\Request;
 
 use App\Http\Resources\Imovel\ImovelResource;
@@ -14,10 +15,15 @@ class ImovelController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Pessoa $pessoa)
     {
-        //
-        return Imovel::all();
+
+        
+        //return Imovel::all();
+
+        //return $pessoa->imoveis;
+
+        return ImovelResource::collection($pessoa->imoveis);
     }
 
     /**

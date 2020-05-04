@@ -24,7 +24,9 @@ class PessoaController extends Controller
 
         //return new PessoaCollection(Pessoa::all());
 
-        return PessoaCollection::collection(Pessoa::all());
+        //return PessoaCollection::collection(Pessoa::all());
+
+        return PessoaCollection::collection(Pessoa::paginate(10));
     }
 
     /**

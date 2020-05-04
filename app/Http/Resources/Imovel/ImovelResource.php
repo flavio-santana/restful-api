@@ -17,17 +17,31 @@ class ImovelResource extends JsonResource
         //return parent::toArray($request);
 
         return [
+            'pessoa_id'   => $this->pessoa_id,
+
             'endereco'    => $this->endereco,
+            
             'numero'      => $this->numero,
+            
             'complemento' => $this->complemento,
+            
             'cep'         => $this->cep,
+            
             'bairro'      => $this->bairro,
+            
             'cidade'      => $this->cidade,
+            
             'uf'          => $this->uf,
+            
             'descricao'   => $this->descricao,
+            
             'desativado'  => $this->desativado,
-            'created_at'  => $this->created_at,
-            'updated_at'  => $this->updated_at,
+
+            /*
+            'ref' => [
+                'href' => route('pessoas.show', $this->pessoa_id),
+            ] 
+            */  
         ];
     }
 }
