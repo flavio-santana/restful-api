@@ -8,8 +8,27 @@ use Illuminate\Http\Request;
 use App\Http\Resources\Pessoa\PessoaResource; 
 use App\Http\Resources\Pessoa\PessoaCollection; 
 
+use App\Http\Requests\PessoaRequest; 
+
+use Symfony\Component\HttpFoundation\Response;
+
 class PessoaController extends Controller
 {
+
+    public function __construct()
+    {
+        /**
+         * Permite que os metódos index e show sejam acessados 
+         * sem que haja a necessidade da autenticação. 
+         */
+        $this->middleware('auth:api')->except('index', 'show');
+        
+        /**
+         * 
+         */
+        //$this->middleware('auth:api');
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -45,9 +64,33 @@ class PessoaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PessoaRequest $request)
     {
+        
         //
+        $objPessoa = new Pessoa;
+
+        $objPessoa->nome           = $request->nome; 
+
+        $objPessoa->dataNascimento = $request->dataNascimento; 
+        
+        $objPessoa->sexo           = $request->sexo; 
+        
+        $objPessoa->email          = $request->email; 
+        
+        $objPessoa->telefone       = $request->telefone; 
+        
+        $objPessoa->desativado     = $request->desativado; 
+        
+        $objPessoa->save();
+
+        //return $request->all();
+        
+        //return response()->json('ok');
+
+        return response([
+            'data' => new PessoaResource($objPessoa)
+        ],Response::HTTP_CREATED);
     }
 
     /**

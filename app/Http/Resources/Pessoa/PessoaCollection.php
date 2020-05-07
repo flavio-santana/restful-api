@@ -21,6 +21,7 @@ class PessoaCollection extends JsonResource
             //'id'             => $this->id,
             'nome'           => $this->nome,
             'dataNascimento' => $this->dataNascimento,
+            'sexo'           => $this->sexo,
             'email'          => $this->email,
             'telefone'       => $this->telefone,
             'desativado'     => $this->desativado,
