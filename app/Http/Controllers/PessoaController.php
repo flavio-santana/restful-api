@@ -9,7 +9,6 @@ use App\Http\Resources\Pessoa\PessoaResource;
 use App\Http\Resources\Pessoa\PessoaCollection; 
 
 use App\Http\Requests\PessoaRequest; 
-
 use Symfony\Component\HttpFoundation\Response;
 
 class PessoaController extends Controller
@@ -128,7 +127,22 @@ class PessoaController extends Controller
      */
     public function update(Request $request, Pessoa $pessoa)
     {
+        
         //
+        /*
+        return response()->json([
+             'name' => 'Abigail',
+             'state' => 'CA'
+        ]);
+        */
+
+        //return $pessoa; 
+
+        $pessoa->update($request->all());
+
+        return response([
+            'data' => new PessoaResource($pessoa)
+        ],Response::HTTP_CREATED);
     }
 
     /**
