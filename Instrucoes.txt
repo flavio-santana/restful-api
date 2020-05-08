@@ -26,5 +26,5 @@ Passo a passo para executar o projeto
 
         php artisan db:seed 
 
-    4.  
+    4. 
      
