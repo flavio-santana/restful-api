@@ -108,17 +108,6 @@ class PessoaController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Model\Pessoa  $pessoa
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Pessoa $pessoa)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -154,5 +143,9 @@ class PessoaController extends Controller
     public function destroy(Pessoa $pessoa)
     {
         //
+        $pessoa->delete();
+        
+        //
+        return response(null, Response::HTTP_NO_CONTENT);
     }
 }
