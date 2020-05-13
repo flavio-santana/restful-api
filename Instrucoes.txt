@@ -16,13 +16,13 @@ Passo a passo para executar o projeto
 
     1.  Execute o código abaixo para criar o projeto 
         
-        composer create-project --prefer-dist laravel/laravel rentmyroom 
+        composer create-project --prefer-dist laravel/laravel rest-api
 
     2.  Para criar as tabelas na base de dados execute o comando, a seguir: 
 
         php artisan migrate  
 
-    3.  Para popular as tabelas do banco de dados, execute a instrução abaixo: 
+    3.  Para popular as tabelas com dados fake, execute a instrução abaixo: 
 
         php artisan db:seed 
 
