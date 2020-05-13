@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-
+ 
 use App\Model\Imovel;
 use App\Model\Pessoa;
 use Illuminate\Http\Request;
-
 use App\Http\Resources\Imovel\ImovelResource;
+use App\Exceptions\ImovelNotBelongsToPessoa;
+use Auth;
 
 class ImovelController extends Controller
 {
@@ -83,7 +84,35 @@ class ImovelController extends Controller
      */
     public function update(Request $request, Imovel $imovel)
     {
+
         //
+        $pessoa_id = $request->pessoa; 
+
+        // Recebo os dados do imóvel conforme o parâmetro passado
+        $dados = $imovel->find($request->imovei); 
+
+        //return response()->json(new ImovelResource($dados));
+
+        if((int)$pessoa_id !== $dados->pessoa_id){
+        //if(Auth::id() !== $dados->pessoa_id){
+
+            //
+            throw new ImovelNotBelongsToPessoa; 
+
+        }else{
+            
+            /*
+            $imovel->update($request->all());
+
+            return response([
+                'data' => new ImovelResource($imovel)
+            ],Response::HTTP_CREATED);
+            */
+
+            return response()->json('update with sucess');
+        }
+    
+        
     }
 
     /**
@@ -95,5 +124,20 @@ class ImovelController extends Controller
     public function destroy(Imovel $imovel)
     {
         //
+        $imovel->delete();
+
+        //
+        return response(null, Response::HTTP_NO_CONTENT);
+    }
+
+    /**
+     * 
+     */
+    public function imovelUserCheck($imovel)
+    {
+        if(Auth::id() !== $imovel->pessoa_id){
+
+            throw new ImovelNotBelongsToPessoa;   
+        }
     }
 }

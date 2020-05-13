@@ -17,6 +17,9 @@ class ImovelResource extends JsonResource
         //return parent::toArray($request);
 
         return [
+            
+            'imovel_id'   => $this->id,
+            
             'pessoa_id'   => $this->pessoa_id,
 
             'endereco'    => $this->endereco,
