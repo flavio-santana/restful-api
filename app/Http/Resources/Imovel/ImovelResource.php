@@ -18,9 +18,9 @@ class ImovelResource extends JsonResource
 
         return [
             
-            'imovel_id'   => $this->id,
+            'id'          => $this->id,
             
-            'pessoa_id'   => $this->pessoa_id,
+            //'pessoa_id'   => $this->pessoa_id,
 
             'endereco'    => $this->endereco,
             

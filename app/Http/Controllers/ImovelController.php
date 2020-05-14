@@ -63,17 +63,18 @@ class ImovelController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Model\Imovel  $imovel
+     * @param  \App\Model\Imovel  $imovei
      * @return \Illuminate\Http\Response
      */
-    public function show(Imovel $imovel)
+    public function show(Pessoa $pessoa, Imovel $imovei)
     {
+        
         //dd($imovel);
 
-        //return $imovel; 
+        //return $imovei; 
 
         //
-        return new ImovelResource($imovel);
+        return new ImovelResource($imovei);
     }
 
     /**
@@ -91,20 +92,31 @@ class ImovelController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Model\Imovel  $imovel
+     * @param  \App\Model\Imovel  $imovei
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Imovel $imovel)
+    public function update(Request $request, Pessoa $pessoa, Imovel $imovei)
     {
 
+        //return $pessoa; 
+        //return $imovei; 
+
+
+        $imovei->update($request->all());
+
+        return response([
+            'data' => new ImovelResource($imovei)
+        ],Response::HTTP_CREATED);
+        
         //
-        $pessoa_id = $request->pessoa; 
+        //$pessoa_id = $request->pessoa; 
 
         // Recebo os dados do imóvel conforme o parâmetro passado
-        $dados = $imovel->find($request->imovei); 
+        //$dados = $imovel->find($request->imovei); 
 
         //return response()->json(new ImovelResource($dados));
 
+        /*
         if((int)$pessoa_id !== $dados->pessoa_id){
         //if(Auth::id() !== $dados->pessoa_id){
 
@@ -113,33 +125,37 @@ class ImovelController extends Controller
 
         }else{
             
-            /*
+            
             $imovel->update($request->all());
 
             return response([
                 'data' => new ImovelResource($imovel)
             ],Response::HTTP_CREATED);
-            */
+            
 
             return response()->json('update with sucess');
         }
-    
+        */
         
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Model\Imovel  $imovel
+     * @param  \App\Model\Imovel  $imovei
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Imovel $imovel)
+    public function destroy(Pessoa $pessoa, Imovel $imovei)
     {
+
+        //return $imovei;
+
         //
-        $imovel->delete();
+        $imovei->delete();
 
         //
         return response(null, Response::HTTP_NO_CONTENT);
+        
     }
 
     /**
