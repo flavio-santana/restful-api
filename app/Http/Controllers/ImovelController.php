@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Model\Imovel;
 use App\Model\Pessoa;
 use Illuminate\Http\Request;
-use App\Http\Resources\Imovel\ImovelResource;
+use App\Http\Requests\ImovelRequest; 
+use App\Http\Resources\Imovel\ImovelResource; 
 use App\Exceptions\ImovelNotBelongsToPessoa;
 use Auth;
+use Symfony\Component\HttpFoundation\Response;
 
 class ImovelController extends Controller
 {
@@ -43,9 +45,19 @@ class ImovelController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ImovelRequest $request, Pessoa $pessoa)
     {
         //
+        $imovel = new Imovel($request->all());
+
+        //
+        $pessoa->imoveis()->save($imovel);
+
+        //
+        return response([
+            'data' => new ImovelResource($imovel)
+        ],Response::HTTP_CREATED);
+
     }
 
     /**

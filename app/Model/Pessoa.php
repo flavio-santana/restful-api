@@ -9,7 +9,14 @@ use App\Model\Imovel;
 class Pessoa extends Model
 {
     //
-    protected $fillable = array('nome', 'dataNascimento', 'sexo', 'email', 'telefone', 'desativado');
+    protected $fillable = array(
+        'nome', 
+        'dataNascimento', 
+        'sexo', 
+        'email', 
+        'telefone', 
+        'desativado'
+    );
 
     public function imoveis()
     {
