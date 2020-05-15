@@ -55,15 +55,15 @@ class Handler extends ExceptionHandler
     public function render($request, Throwable $exception)
     {
         
-        //dd($exception);
-
+        /**
+         * Para validar os erros chamda o endpoint através do navegador,
+         * desabilitar a validação if($request->expectsJson()) 
+         */
         if($request->expectsJson()){
 
             return $this->apiException($request, $exception); 
 
         }
-
-        //return response()->view('errors.custom', [], 500);
 
         return parent::render($request, $exception);
     }
