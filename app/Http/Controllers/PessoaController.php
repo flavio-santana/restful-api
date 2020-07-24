@@ -11,10 +11,14 @@ use App\Http\Resources\Pessoa\PessoaCollection;
 use App\Http\Requests\PessoaRequest; 
 use Symfony\Component\HttpFoundation\Response;
 
+use App\Repositories\PessoaRepository;
+
 class PessoaController extends Controller
 {
 
-    public function __construct()
+    protected $pessoa;
+
+    public function __construct(PessoaRepository $pessoa)
     {
         /**
          * Permite que os metódos index e show sejam acessados 
@@ -26,6 +30,8 @@ class PessoaController extends Controller
          * 
          */
         //$this->middleware('auth:api');
+
+        $this->pessoa = $pessoa;
     }
 
     /**
@@ -35,16 +41,8 @@ class PessoaController extends Controller
      */
     public function index()
     {
-        //
-        //return Pessoa::all();
-
-        //return PessoaResource::collection(Pessoa::all());
-
-        //return new PessoaCollection(Pessoa::all());
-
-        //return PessoaCollection::collection(Pessoa::all());
-
-        return PessoaCollection::collection(Pessoa::paginate(10));
+        
+        return PessoaCollection::collection($this->pessoa->getAll(10, true));
     }
 
     /**
@@ -100,11 +98,8 @@ class PessoaController extends Controller
      */
     public function show(Pessoa $pessoa)
     {
-        
-        //return $pessoa; 
-
         //
-        return new PessoaResource($pessoa);
+        return new PessoaResource($this->pessoa->get($pessoa->id));
     }
 
     /**
