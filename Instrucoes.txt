@@ -18,13 +18,18 @@ Passo a passo para executar o projeto
         
         composer create-project --prefer-dist laravel/laravel rest-api
 
-    2.  Para criar as tabelas na base de dados execute o comando, a seguir: 
+    2.  Agora você deve criar uma base de dados, com os dados sugeridos abaixo:
+
+        user: root 
+        pass: 123456
+        base: restApi    
+
+    3.  Para gerar as tabelas na base de dados execute o comando, a seguir: 
 
         php artisan migrate  
 
-    3.  Para popular as tabelas com dados fake, execute a instrução abaixo: 
+    4.  Para popular as tabelas com dados fake, execute a instrução abaixo: 
 
         php artisan db:seed 
 
-    4. 
      
